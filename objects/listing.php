@@ -21,7 +21,6 @@ class Listing{
   //read listings
   function read(){
 
-    echo $this->table_name;
     //select all query
     $query = "SELECT * FROM " . $this->table_name;
 

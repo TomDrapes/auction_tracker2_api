@@ -24,12 +24,13 @@ $stmt = $listing->read();
 $num = $stmt->rowCount();
 
 //check if more than 0 record found
-if($num > 0){
+if($num>0){
 
   //listings array
   $listings_arr = array();
-  $listings_arr['records']=array();
+  //$listings_arr['records']=array();
 
+  $count = 0;
   //retrieve table contents
   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     //extract row NB: this will make $row['name'] to just $name only
@@ -45,7 +46,8 @@ if($num > 0){
       'sale_date' => $sale_date
     );
 
-    array_push($listings_arr['records'], $listing_item);
+    //array_push($listings_arr['records'], $listing_item);
+    array_push($listings_arr, $listing_item);
   }
 
   // Set response code - 200 OK
@@ -53,6 +55,7 @@ if($num > 0){
 
   // show products data in json format
   echo json_encode($listings_arr);
+
 }else{
 
   // set response code - 404 Not found
